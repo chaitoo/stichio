@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app= 'myApp'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pontano+Sans|Quicksand|Sanchez" rel="stylesheet">
+    <title>Feltso-Dashboard</title>
+  </head>
+  <body  ng-controller='mainCtrl'>
+<style>
+.hover-show {
+  display: none;
+}
+.select:hover .hover-show {
+  display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 150px;
+}
+</style>
+<div class="center">
+  <img src="http://stichio-trial.s3.amazonaws.com/images/20160406143947233648" alt="" onclick="showpop();" style="cursor:pointer;position:absolute;left:30%;top:5%">
+  <div id="popup" style="display:none;position:absolute;background-color:rgba(0, 0, 0, 0.7);height:100%;left:0px;top:0px;width:100%">
+    <div class="row" id="window" style="position:absolute;background-color:white;height:75%;left:25%;top:10%;width:50%">
+      <div class="white-panel" style="padding:0px 0px">
+        <div class="left-section col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding:10px 10px;">
+          <img src="http://stichio-trial.s3.amazonaws.com/images/20160406143947233648" alt="" style="width:100%;max-height:300px;">
+          <div class="edit-description" style="padding:10px 0px">
+            <div class="edit-title" style="padding-bottom:10px;">
+              Edit Description
+            </div>
+            <div class="edit-text-area">
+              <textarea class="form-control" rows="6"  placeholder="Can anybody tell me why they are doing this?"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="right-section col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding:10px 10px;">
+          <div class="add-to" style="padding:10px 0px">
+            <div class="add-to-title" style="padding:10px 0px;font-weight: bold;" >
+              Add To
+            </div>
+            <div class="search" style="padding:10px 0px">
+              <input type="text" name="" value="" placeholder="Search for frame">
+            </div>
+            <div class="create-frame" style="padding:10px 0px;font-weight: bold;color:red;cursor:pointer;">
+              + Create New Frame
+            </div>
+          </div>
+          <div class="frames" style="max-height:300px;overflow-y:scroll;overflow-x:hidden">
+          <div  ng-repeat="res in results" >
+            <div class="select row" style="height:180px;">
+              <div class="tile col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px 0px">
+                <img src="{{res.FrameData.cover_thumb}}" alt="" style="width:60%;position:relative;left:0px;top:0px">
+                <img src="{{res.FrameData.images[0].imageUrl}}" alt="" style="width:30%;position:relative;left:0px;top:-20px">
+                <img src="{{res.FrameData.images[1].imageUrl}}" alt="" style="width:30%;position:relative;left:65%;top:-40px">
+              </div>
+              <div class="frame-name col-lg-7 col-md-7 col-sm-7 col-xs-7" style="position:relative;top:50px">
+                {{res.FrameData.frameName}}
+              </div>
+              <div class="hover-show">
+                <button class="stich-button btn btn-warning" type="button" name="button" onclick="stich()" style="opacity: 1;border-radius:0px;position:relative;top:25%">Stich!</button>
+              </div>
+            </div>
+            &nbsp;
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function showpop(){
+    $("#popup").show();
+  }
+  function stich(){
+    $("#popup").hide();
+  }
+</script>
+
+
+
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/app2.js"></script>
+
+  </body>
+</html>
